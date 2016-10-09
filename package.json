@@ -1,0 +1,11 @@
+{
+  "name": "node-mysql-sample",
+  "author": "Anthony Guertin",
+  "description": "Learn mysql with javascript using node",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.14.0",
+    "mysql": "2.11.1"
+  }
+}
