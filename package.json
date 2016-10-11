@@ -6,6 +6,10 @@
   "private": true,
   "dependencies": {
     "express": "4.14.0",
-    "mysql": "2.11.1"
+    "mysql": "2.11.1",
+    "standard": "*"
+  },
+  "scripts": {
+    "test": "standard && node tests/"
   }
 }

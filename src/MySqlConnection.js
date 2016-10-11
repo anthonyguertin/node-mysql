@@ -8,7 +8,7 @@ module.exports = class MySqlConnection {
 
   constructor (connectionString) {
     // First you need to create a connection to the db
-    if (!connectionString instanceof ConnectionString) {
+    if (!(connectionString instanceof ConnectionString)) {
       console.log(`Parameter 'connectionString' is not a ConnectionString class`)
       return
     }
