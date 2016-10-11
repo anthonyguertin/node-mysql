@@ -7,6 +7,8 @@ var String = require('./String.js')
 module.exports = class MySqlConnection {
 
   constructor (connectionString) {
+    this.MySql = MySql
+
     // First you need to create a connection to the db
     if (!(connectionString instanceof ConnectionString)) {
       console.log(`Parameter 'connectionString' is not a ConnectionString class`)
@@ -24,32 +26,28 @@ module.exports = class MySqlConnection {
     var db = !String.IsNullOrEmpty(connectionString['database']) ? connectionString['database'] : String.Empty
 
     console.log(host)
-    this.Connection = MySql.createConnection(
-      {
-        host: host,
-        port: port,
-        user: user,
-        password: password,
-        database: db
-      }
-    )
+    this.Connection = MySql.createConnection({
+      host: host,
+      port: port,
+      user: user,
+      password: password,
+      database: db
+    })
 
     this.Connection.connect(function (err) {
       if (err) {
-        console.log('Error connecting to Db')
+        console.log('Error connecting to Db' + err.stack)
         return
       }
-
       console.log('Connected')
     })
   }
-
-  static get Connection () {
-    return {
-      Status: {
-        Connected: 'Connected',
-        Disconnect: 'Disconnected'
-      }
+  static get ConnectionState () {
+    var State = {
+      Connected: 'Connected',
+      Disconnected: 'Disconnected'
     }
+
+    return State
   }
 }
